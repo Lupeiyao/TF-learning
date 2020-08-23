@@ -4,7 +4,7 @@ import numpy as np
 
 class CategoricalTruePositives(tf.keras.metrics.Metric):
 
-    def __init__(self, name="categorical_true_positives_loss", **kwargs):
+    def __init__(self, name="categorical_true_positives_metric", **kwargs):
         super(CategoricalTruePositives, self).__init__(name=name, **kwargs)
         self.true_positives = self.add_weight(name='tp', initializer='zeros')
 
