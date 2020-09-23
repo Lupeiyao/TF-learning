@@ -1,0 +1,25 @@
+import pandas as pd
+
+if __name__ == '__main__':
+    data = pd.read_csv('../resources/titanic/train.csv', sep=',')
+
+    # 返回(num_row, num_column)
+    print(data.shape)
+
+    # 返回每列的基本统计信息
+    print(data.describe())
+
+    # 打印index=8,9,10的Pclass列
+    print(data.loc[[8, 9, 10], 'Pclass'])
+
+    # filter操作
+    class_x = data[((data['Pclass'] == 1) | (data['Pclass'] == 2)) & ~(data['Embarked'] == 'C')]
+    class_y = data[data['Pclass'].isin([1, 3])]
+
+    # 修改
+    data.loc[8, 'Pclass'] = 1
+    data.loc[data['Pclass'] == 1, 'Pclass'] = 10
+    print(data['Pclass'].map(lambda x: x * 10))
+    print(data.apply(sum))
+
+    # data.to_csv('path', index=None)
