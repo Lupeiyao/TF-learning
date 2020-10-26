@@ -33,3 +33,20 @@ if __name__ == '__main__':
     var_x = tf.Variable([[1, 2], [3, 4]], dtype=tf.float32)
     var_x[1, :].assign(tf.constant([0.0, 0.1]))
     tf.print(var_x)
+
+    # 标量运算（支持加减乘除，次幂，取余，地板除法，比较， & | ==
+    # tf.sqrt, tf.add_n(a, b, c), tf.maximum(a,b), tf.minimum(a, b)
+    # tf.math.round 四舍, tf.math.floor 向下, tf.math.ceil 向上
+    # y = tf.clip_by_value(x, clip_value_min=-1, clip_value_max=1) 溢出
+    # z = tf.clip_by_norm(x, clip_norm=3)
+    a = tf.constant([[1, 0.2], [2, 0.1]])
+    tf.print(a >= 1)
+
+    # 向量计算,支持tf.reduce_sum,tf.reduce_mean,tf.reduce_max
+    # tf.reduce_min,tf.reduce_pord(连乘),reduce_all/any(与，或)
+    # tf.math.argmax/argmin(返回下标)
+    b = tf.reshape(tf.range(1, 10), (3,3))
+    tf.print(tf.reduce_sum(b, axis=0, keepdims=True))
+
+    # 矩阵计算, tf.matmul(a, b), tf.transpose(a), tf.linalg.inv(a)
+    # tf.linalg.det(a)
